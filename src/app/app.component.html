@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-form-field appearance="outline">
+    <mat-label>
+      Select User
+    </mat-label>
+
+    <input
+      matInput
+      type="text"
+      [formControl]="userSearchControl"
+      [matAutocomplete]="users"
+      autocomplete="off"
+    />
+
+    <mat-autocomplete #users="matAutocomplete">
+      <mat-option *ngFor="let user of filteredUsers$ | async" [value]="user.fullName">
+        {{user.fullName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
